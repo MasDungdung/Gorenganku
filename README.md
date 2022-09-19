@@ -1,0 +1,2 @@
+# Gorenganku
+Manajemen Gorengan
