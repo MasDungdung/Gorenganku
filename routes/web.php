@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Karyawan;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KaryawanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,39 +66,10 @@ Route::get('/master_data_entry_penjualan', function () {
     ]);
 });
 
-//store Karyawan
-Route::get('/entry_karyawan', function () {
-    return view('template.manager.entry_karyawan',[
-        "nama"          => "Administrator",
-        "email"         => "admin@gorenganku.com",
-        "foto_profil"   => "assets/images/faces/1.jpg",
-        "judul"         => "Entry Karyawan"
-    ]);
-});
-
-Route::get('/master_data_entry_karyawan', function () {
-    $data   = [
-        [
-            "nomor"             => '12',
-            "nama_karyawan"     => 'Andung',
-            "foto_karyawan"     => 'assets/uploads/andung.jpeg',
-            "status"            => 'active'
-        ],[
-            "nomor"             => '12',
-            "nama_karyawan"     => 'Andung',
-            "foto_karyawan"     => 'assets/uploads/andung.jpeg',
-            "status"            => 'active'
-        ]
-    ];
-        
-    return view('template.manager.master_data_entry_karyawan',[
-        "nama"          => "Administrator",
-        "email"         => "admin@gorenganku.com",
-        "foto_profil" => "assets/images/faces/1.jpg",
-        "judul"         => "Master Data Entry Karyawan",
-        "master_data"   => $data   
-    ]);
-});
+//route Karyawan
+Route::get('/entry_karyawan',[KaryawanController::class,'tambah_karyawan']);
+Route::get('/master_data_entry_karyawan',[KaryawanController::class,'index']);
+Route::get('/master_data_entry_karyawan/{slug}',[KaryawanController::class,'detail_karyawan']);
 
 //route store
 Route::get('/entry_store', function () {

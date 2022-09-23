@@ -21,13 +21,13 @@
                             <h3>Master Data Entry Store GorenganKu</h3>
                         </div>
                         <div class="card-body">
-                            <table class="table" id="table1">
+                            <table class="table auto" id="table1">
                                 <thead>
                                     <tr>
                                         <th>Nomor</th>
                                         <th>Nama Pegawai</th>
                                         <th>Bukti Pendukung</th>
-                                        <th>status</th>
+                                        <th colspan="2">status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -42,6 +42,9 @@
                                         <td>
                                             <span
                                                 class="badge bg-{{ $data["status"] === "active" ? "success" : "danger" }}">{{ $data["status"] }}</span>
+                                        </td>
+                                        <td>
+                                            <a href="/master_data_entry_karyawan/{{ $data["slug"] }}" class="btn btn-primary -">detail</span>
                                         </td>
                                     </tr>
                                     <div class="modal fade text-center" id="show" tabindex="-1"
